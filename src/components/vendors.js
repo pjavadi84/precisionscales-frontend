@@ -1,9 +1,9 @@
 class Vendors {
     constructor(){
         this.vendors = []
+        this.adapter = new VendorsAdapter()
         this.createVendorForm()
-        this.createVendor()
-        // this.fetchAndLoadVendors()
+        this.fetchAndLoadVendors()
     }
 
     
@@ -100,12 +100,19 @@ class Vendors {
             this.vendorSubmitButton = document.createElement('input')
             this.vendorSubmitButton.setAttribute("type","submit")
             this.vendorForm.appendChild(this.vendorSubmitButton)
-            this.vendorSubmitButton.addEventListener('submit', this.createVendor.bind(this))     
+            this.vendorSubmitButton.addEventListener('submit', this.fetchAndPostVendors.bind(this))     
         })
     }
 
-    createVendor(event){
-        console.log("this is for creating a new vendor. posting to database")
+    fetchAndPostVendors(){
+        
+    }
+
+    fetchAndLoadVendors(){
+        this.adapter.getVendors()
+        .then(vendors => {
+            console.log(vendors)
+        })
     }
        
         
