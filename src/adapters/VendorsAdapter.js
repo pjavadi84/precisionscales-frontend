@@ -1,6 +1,6 @@
 class VendorsAdapter {
     constructor(){
-        this.baseUrl = "http://locahost:3000/api/v1/vendors"
+        this.baseUrl = "http://localhost:3000/api/v1/vendors"
     }
 
     getVendors(){

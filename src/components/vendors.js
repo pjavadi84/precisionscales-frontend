@@ -109,12 +109,20 @@ class Vendors {
     }
 
     fetchAndLoadVendors(){
+        // debugger
         this.adapter.getVendors()
         .then(vendors => {
-            console.log(vendors)
+            vendors.data.forEach(vendor => this.vendors.push(vendor))
+        }).then(()=>{
+            this.renderVendors()
         })
     }
-       
+
+
+    renderVendors(){
+        const vendor_information = document.getElementById("vendor_card")
+        vendor_information.innerHTML = "vendors are here!"
+    }
         
     
 }
