@@ -10,89 +10,91 @@ class Vendors {
 
     createVendorForm(){
         window.addEventListener('DOMContentLoaded', ()=>{
-            console.log("This is for creating a new form")
-
-            
            
-            var br = document.createElement("br");
-           
-    
             this.vendorsContainer = document.getElementById("create_new_vendor")
             
             // CREATING FORM
             this.vendorForm = document.createElement("form")
             this.vendorForm.setAttribute("class","vendor_form")
             this.vendorsContainer.appendChild(this.vendorForm)
-            this.vendorFormGroup = document.createElement("div")
-            this.vendorFormGroup.setAttribute("class", "form_group")
-            this.vendorForm.appendChild(this.vendorFormGroup)
+            
 
             //1:  NAME ===========================
-            //  label:
-            this.vendorNameLabel = document.createElement("label")
-            this.vendorNameLabel.innerHTML = "Enter your name: "
-            this.vendorForm.appendChild(this.vendorNameLabel)
-            // input field:
-            this.vendorNameField = document.createElement('input')
-            this.vendorNameField.setAttribute("type","text")
-            this.vendorNameField.setAttribute("id","name-input-field")
-            this.vendorForm.appendChild(this.vendorNameField)
-            
+            this.vendorName = document.createElement("div")
+            this.vendorName.setAttribute("class", "vendor-name")
+            this.vendorForm.appendChild(this.vendorName)
+                //  label:
+                this.vendorNameLabel = document.createElement("label")
+                this.vendorNameLabel.innerHTML = "Enter vendor/customer name: "
+                this.vendorName.appendChild(this.vendorNameLabel)
+                // input field:
+                this.vendorNameField = document.createElement('input')
+                this.vendorNameField.setAttribute("type","text")
+                this.vendorNameField.setAttribute("id","name-input-field")
+                this.vendorName.appendChild(this.vendorNameField)
             
 
             
             // 2: ADDRESS ==============================
-            // label:
-            this.vendorAddressLabel = document.createElement("label")
-            this.vendorAddressLabel.innerHTML = "Enter your address: "
-            this.vendorForm.appendChild(this.vendorAddressLabel)
-            // input field:
-            this.vendorAddressField = document.createElement('input')
-            this.vendorAddressField.setAttribute("type","text")
-            this.vendorAddressField.setAttribute("id","address-input-field")
-            this.vendorForm.appendChild(this.vendorAddressField)
-            this.vendorAddressField.appendChild(br)
+            this.vendorAddress = document.createElement("div")
+            this.vendorAddress.setAttribute("class", "vendor-address")
+            this.vendorForm.appendChild(this.vendorAddress)
+                // label:
+                this.vendorAddressLabel = document.createElement("label")
+                this.vendorAddressLabel.innerHTML = "Enter vendor/customer address: "
+                this.vendorAddress.appendChild(this.vendorAddressLabel)
+                // input field:
+                this.vendorAddressField = document.createElement('input')
+                this.vendorAddressField.setAttribute("type","text")
+                this.vendorAddressField.setAttribute("id","address-input-field")
+                this.vendorAddress.appendChild(this.vendorAddressField)
             
             
             
             // 3: ZIPCODE ==============================
-            // label:
-            this.vendorZipCodeLabel = document.createElement("label")
-            this.vendorZipCodeLabel.innerHTML = "Zip Code: "
-            this.vendorForm.appendChild(this.vendorZipCodeLabel)
-            // input field:
-            this.vendorZipCodeField = document.createElement('input')
-            this.vendorZipCodeField.setAttribute("type","text")
-            this.vendorZipCodeField.setAttribute("id","zipcode-input-field")
-
-            this.vendorForm.appendChild(this.vendorZipCodeField)
-            this.vendorZipCodeField.appendChild(br)
+            this.vendorZipCode = document.createElement("div")
+            this.vendorZipCode.setAttribute("class", "vendor-zip-code")
+            this.vendorForm.appendChild(this.vendorZipCode)
+                // label:
+                this.vendorZipCodeLabel = document.createElement("label")
+                this.vendorZipCodeLabel.innerHTML = "Enter vendor/customer zipcode: "
+                this.vendorZipCode.appendChild(this.vendorZipCodeLabel)
+                // input field:
+                this.vendorZipCodeField = document.createElement('input')
+                this.vendorZipCodeField.setAttribute("type","text")
+                this.vendorZipCodeField.setAttribute("id","zipcode-input-field")
+                this.vendorZipCode.appendChild(this.vendorZipCodeField)
+           
         
             
              // 4: EMAIL ===============================
-            // label:
-            this.vendorEmailLabel = document.createElement("label")
-            this.vendorEmailLabel.innerHTML = "Email: "
-            this.vendorForm.appendChild(this.vendorEmailLabel)
-            // input field:
-            this.vendorEmailField = document.createElement('input')
-            this.vendorEmailField.setAttribute("type","email")
-            this.vendorEmailField.setAttribute("id","email-input-field")
-            this.vendorForm.appendChild(this.vendorEmailField)
-            this.vendorEmailField.appendChild(br)
+            this.vendorEmail = document.createElement("div")
+            this.vendorEmail.setAttribute("class", "vendor-email")
+            this.vendorForm.appendChild(this.vendorEmail)
+                // label:
+                this.vendorEmailLabel = document.createElement("label")
+                this.vendorEmailLabel.innerHTML = "Enter vendor/customer Email: "
+                this.vendorEmail.appendChild(this.vendorEmailLabel)
+                // input field:
+                this.vendorEmailField = document.createElement('input')
+                this.vendorEmailField.setAttribute("type","email")
+                this.vendorEmailField.setAttribute("id","email-input-field")
+                this.vendorEmail.appendChild(this.vendorEmailField)
            
             
-            
             // 5: CONTACT-NUMBER ========================
-            // label:
-            this.vendorContactNumberlLabel = document.createElement("label")
-            this.vendorContactNumberlLabel.innerHTML = "Phone Number: "
-            this.vendorForm.appendChild(this.vendorContactNumberlLabel)
-            // input field:
-            this.vendorContactNumberField = document.createElement('input')
-            this.vendorContactNumberField.setAttribute("type","text")
-            this.vendorContactNumberField.setAttribute("id","contact-number-input-field")
-            this.vendorForm.appendChild(this.vendorContactNumberField)
+            this.vendorContactNumber = document.createElement("div")
+            this.vendorContactNumber.setAttribute("class", "vendor-contact-number")
+            this.vendorForm.appendChild(this.vendorContactNumber)
+                // label:
+                this.vendorContactNumberlLabel = document.createElement("label")
+                this.vendorContactNumberlLabel.innerHTML = "Enter vendor/customer Phone Number: "
+                this.vendorContactNumber.appendChild(this.vendorContactNumberlLabel)
+                // input field:
+                this.vendorContactNumberField = document.createElement('input')
+                this.vendorContactNumberField.setAttribute("type","text")
+                this.vendorContactNumberField.setAttribute("id","contact-number-input-field")
+                this.vendorContactNumber.appendChild(this.vendorContactNumberField)
             
 
 
