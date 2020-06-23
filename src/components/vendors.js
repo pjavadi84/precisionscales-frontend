@@ -1,9 +1,12 @@
 class Vendors {
     constructor(){
-        this.vendors = []
+        this.vendorsData = []
         this.adapter = new VendorsAdapter()
         this.createVendorForm()
+        // this.bindToVendorForm()
         this.fetchAndLoadVendors()
+        this.fetchAndPostVendors()
+        
     }
 
     
@@ -101,13 +104,40 @@ class Vendors {
             // 6: SUBMIT ================================
             this.vendorSubmitButton = document.createElement('input')
             this.vendorSubmitButton.setAttribute("type","submit")
+            this.vendorSubmitButton.setAttribute("class","btn btn-primary")
+            this.vendorSubmitButton.setAttribute("id","new-vendor-form-submittal")
             this.vendorForm.appendChild(this.vendorSubmitButton)
             this.vendorSubmitButton.addEventListener('submit', this.fetchAndPostVendors.bind(this))     
         })
     }
 
-    fetchAndPostVendors(){
-        
+    // first you have to find where in your html elements your user is inputting their information:
+    // bindToVendorForm(){
+    //     // this.vendorsContainer = document.getElementsByClassName("vendor_form")
+    //     this.vendorNameElement = document.getElementById("name-input-field")
+    //     this.vendorAddressElement = document.getElementById("address-input-field")
+    //     this.vendorZipCodeElement = document.getElementById("vendor-zip-code")
+    //     this.vendorEmailElement = document.getElementById("vendor-email")
+    //     this.contactNumberElement = document.getElementById("contact-number-input-field")
+
+    
+    // }
+
+    postToDBAndThenRender(){
+        const nameValue = this.vendorNameField.value
+        const addressValue = vendorAddressField.value
+        const zipcodeValue = vendorZipCodeField.value
+        const emailValue = vendorEmailField.value
+        const contactnumberValue = vendorContactNumberField.value
+
+        this.adapter.postVendors(nameValue,addressValue,zipcodeValue,emailValue,contactnumberValue)
+        .then(vendor => {
+            this.vendorsData.push(new Vendor(vendor))
+            this.renderVendors()
+        })
+            
+
+        }
     }
 
     fetchAndLoadVendors(){
@@ -119,6 +149,10 @@ class Vendors {
         }).then(()=>{
             this.renderVendors()
         })
+    }
+
+    fetchAndPostVendors(){
+
     }
 
 
