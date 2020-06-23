@@ -114,7 +114,8 @@ class Vendors {
         // debugger
         this.adapter.getVendors()
         .then(vendors => {
-            vendors.data.forEach(vendor => this.vendors.push(vendor))
+            vendors.data.forEach(vendor => this.vendors.push(new Vendor(vendor)))
+            console.log(this.vendors)
         }).then(()=>{
             this.renderVendors()
         })
@@ -123,8 +124,10 @@ class Vendors {
 
     renderVendors(){
         const vendor_information = document.getElementById("vendor_card")
-        vendor_information.innerHTML = "vendors are here!"
-    }
+        this.vendorUl = document.createElement('ul')
+        this.vendorUl.setAttribute("class","list-group list-group-flush")
+        vendor_information.appendChild(this.vendorUl)
         
-    
+        this.vendorUl.innerHTML = this.vendors.map(vendor => vendor.renderVendorLi()).join('')    
+    }         
 }
