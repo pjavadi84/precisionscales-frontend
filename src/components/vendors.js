@@ -1,12 +1,9 @@
 class Vendors {
     constructor(){
-        this.vendorsData = []
+        // this.vendorsData = []
         this.adapter = new VendorsAdapter()
         this.createVendorForm()
-        // this.bindToVendorForm()
         this.fetchAndLoadVendors()
-        this.fetchAndPostVendors()
-        
     }
 
     
@@ -107,9 +104,13 @@ class Vendors {
             this.vendorSubmitButton.setAttribute("class","btn btn-primary")
             this.vendorSubmitButton.setAttribute("id","new-vendor-form-submittal")
             this.vendorForm.appendChild(this.vendorSubmitButton)
-            this.vendorSubmitButton.addEventListener('submit', this.fetchAndPostVendors.bind(this))     
+            this.vendorForm.addEventListener("submit", this.createVendor.bind(this))
+               
         })
     }
+
+       
+    
 
     // first you have to find where in your html elements your user is inputting their information:
     // bindToVendorForm(){
@@ -136,32 +137,43 @@ class Vendors {
             this.renderVendors()
         })
             
-
-        }
     }
+    
 
     fetchAndLoadVendors(){
+        this.vendorsData = []
         // debugger
         this.adapter.getVendors()
         .then(vendors => {
-            vendors.data.forEach(vendor => this.vendors.push(new Vendor(vendor)))
-            console.log(this.vendors)
+            vendors.data.forEach(vendor => this.vendorsData.push(new Vendor(vendor)))
         }).then(()=>{
-            this.renderVendors()
+            this.renderVendors(this.vendorsData)
+            // debugger
         })
     }
 
-    fetchAndPostVendors(){
+    
+    createVendor(e){
+        // debugger
+        e.preventDefault()
+        this.newVendorName = document.getElementById('name-input-field')
+        this.newVendorAddress = document.getElementById('address-input-field')
+        this.newVendorZipCode = document.getElementById('zipcode-input-field')
+        this.newVendorEmail = document.getElementById('email-input-field')
+        this.newVendorPhoneNumber = document.getElementById('contact-number-input-field')
 
+        this.adapter.createVendor(this.newVendorName, this.newVendorAddress, this.newVendorZipCode, this.newVendorEmail, this.newVendorPhoneNumber)
     }
 
 
     renderVendors(){
+        
         const vendor_information = document.getElementById("vendor_card")
         this.vendorUl = document.createElement('ul')
         this.vendorUl.setAttribute("class","list-group list-group-flush")
         vendor_information.appendChild(this.vendorUl)
         
-        this.vendorUl.innerHTML = this.vendors.map(vendor => vendor.renderVendorLi()).join('')    
-    }         
-}
+        this.vendorUl.innerHTML = this.vendorsData.map(vendor => vendor.renderVendorLi()).join('')    
+        
+    }  
+}       

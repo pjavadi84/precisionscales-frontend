@@ -9,6 +9,7 @@ class Vendor{
     }
 
     renderVendorLi(){
+        // debugger
         return `
             
                 <div class="jumbotron jumbotron-fluid">
@@ -22,8 +23,7 @@ class Vendor{
                         <button class="btn btn-danger" vendor-id= ${this.id}>Delete</button>  
                     </div>
                 </div>
-            
-    
-        `
+                
+                `
     }
 }

@@ -5,21 +5,45 @@ class VendorsAdapter {
     }
 
     getVendors(){
-        return fetch(this.baseUrl).then(response => response.json())
+        return fetch(this.baseUrl).then(response => response.json()
+        )  
     }
 
-    postVendors(nameValue,addressValue, zipcodeValue,emailValue,contactNumberValue){
+    async createVendor(vendorName, vendorAddress,vendorZipCode,vendorEmail,vendorPhoneNumber){
         const newVendorObject = {
-            name: nameValue,
-            address: addressValue,
-            zip_code: zipcodeValue,
-            email: emailValue,
-            contact_number: contactNumberValue
+            name: vendorName.value,
+            address: vendorAddress.value,
+            zipcode: vendorZipCode.value,
+            email: vendorEmail.value,
+            contact_number: vendorPhoneNumber.value
         }
+        // debugger
 
-        return fetch(this.baseUrl, {method: 'POST', header: {'content_type': 'application/json'}, body: JSON.stringify(newVendorObject)})
-        .then(resonse => response.json())
+        await fetch(this.baseUrl, {
+            method: 'POST',
+            // mode: 'no-cors',
+            // headers: 'no-cache',
+            // credentials: 'same-origin',
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            // redirect: 'follow',
+            // referrerPolicy: 'no-referrer',
+            body: JSON.stringify(newVendorObject)
+        })
+        // debugger
+        .then(response => response.json())
+        .then(newVendorObject => {
+            console.log('Success:', newVendorObject);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
         
-        
+        // return fetch(this.baseUrl, {
+        //     method: 'POST', 
+        //     header: {'content_type': 'application/json'}, 
+        //     body: JSON.stringify({newVendorObject})})
+        // .then(response => response.json())      
     }
 }
